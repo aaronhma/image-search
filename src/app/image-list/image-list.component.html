@@ -1,0 +1,40 @@
+<mat-input-container>
+  <input
+    class="search"
+    (keydown.enter)="searchImages(searchQuery)"
+    [(ngModel)]="searchQuery"
+    matInput
+    placeholder="Search For Images"
+    width="100%">
+  <mat-hint>Search For Images</mat-hint>
+</mat-input-container>
+<button (click)="searchImages(searchQuery)" mat-raised-button>Find Images</button>
+
+<div *ngIf="searching">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
+
+<div *ngFor="let image of images" class="image-container">
+  <mat-card class="">
+    <img src="{{ image.webformatURL }}" alt="Image Not Found">
+    <p>Tags: {{ image.tags }}</p>
+    <p>User: {{ image.user }}</p>
+    <p>Comments: {{ image.comments }}</p>
+    <p>Likes: {{ image.likes }}</p>
+    <button mat-raised-button style="background-color: #0000ff; color: #fff" (click)="download()">Download</button>
+  </mat-card>
+</div>
+
+<div style="padding-top: 50px; padding-bottom: 60px;">
+  <div style="color: #808080;">
+    <span>&copy;Copyright 2017 By Firebolt Inc.&nbsp;All Rights Reserved.</span>
+    <div id="fa-fa-firebolt-info">
+      <div>
+        <span>
+          Firebolt Inc. is a kid company created by Aaron in Cupertino, California.
+          Right now, it is a not-profit incorporation.
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
